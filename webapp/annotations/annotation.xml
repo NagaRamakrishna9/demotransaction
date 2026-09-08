@@ -236,11 +236,6 @@
                             <PropertyValue Property="Value" Path="Amount"/>
                         </Record>
 
-                        <!-- Status -->
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Status"/>
-                            <PropertyValue Property="Value" Path="Status"/>
-                        </Record>
 
                         <!-- Validation Issue -->
                         <Record Type="UI.DataField">

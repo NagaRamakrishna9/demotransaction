@@ -163,6 +163,15 @@
                     "type": "ResponsiveTable"
                   },
                   "columns": {
+                    "CustomStatusColumn": {
+                      "header": "Status",
+                      "template": "demotransactions.ext.fragment.StatusColumn",
+                      "horizontalAlign": "Left",
+                      "position": {
+                        "anchor": "DataField::Amount",
+                        "placement": "After"
+                      }
+                    },
                     "CustomProgressColumn": {
                       "header": "Progress",
                       "template": "demotransactions.ext.fragment.ProgressColumn",
