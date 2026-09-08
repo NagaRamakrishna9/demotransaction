@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:cards="sap.f.cards">
+
+    <m:ScrollContainer
+        horizontal="true"
+        vertical="false"
+        width="100%"
+        height="9.5rem"
+        class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+
+        <m:HBox renderType="Bare" class="sapUiSmallMarginBegin">
+
+            <!-- Total Transactions -->
+            <f:Card width="14rem" height="9rem" class="sapUiTinyMarginEnd">
+                <f:header>
+                    <cards:NumericHeader
+                        title="Total Transactions"
+                        titleMaxLines="1"
+                        subtitle="Current period"
+                        number="{kpi>/totalCount}"
+                        unit="" />
+                </f:header>
+            </f:Card>
+
+            <!-- Touchless Posted -->
+            <f:Card width="14rem" height="9rem" class="sapUiTinyMarginEnd">
+                <f:header>
+                    <cards:NumericHeader
+                        title="Touchless Posted"
+                        titleMaxLines="1"
+                        subtitle="Automatically processed"
+                        number="{kpi>/touchlessCount}"
+                        unit=""
+                        state="Good"
+                        trend="Up">
+                        <cards:sideIndicators>
+                            <cards:NumericSideIndicator
+                                title="Rate"
+                                number="{kpi>/touchlessRate}"
+                                unit="%" />
+                        </cards:sideIndicators>
+                    </cards:NumericHeader>
+                </f:header>
+            </f:Card>
+
+            <!-- Exceptions -->
+            <f:Card width="14rem" height="9rem" class="sapUiTinyMarginEnd">
+                <f:header>
+                    <cards:NumericHeader
+                        title="Exceptions"
+                        titleMaxLines="1"
+                        subtitle="Need attention"
+                        number="{kpi>/exceptionCount}"
+                        unit=""
+                        state="{kpi>/exceptionState}" />
+                </f:header>
+            </f:Card>
+
+        </m:HBox>
+    </m:ScrollContainer>
+
+</core:FragmentDefinition>

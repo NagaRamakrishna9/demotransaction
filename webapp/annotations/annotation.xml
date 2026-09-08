@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+    <!-- UI Vocabulary -->
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+
+    <!-- Common Vocabulary -->
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+
+    <!-- Service Metadata -->
+    <edmx:Reference Uri="/here/goes/your/serviceurl/$metadata">
+        <edmx:Include Namespace="ProcureFlow.Service"/>
+    </edmx:Reference>
+
+    <edmx:DataServices>
+
+        <Schema
+            xmlns="http://docs.oasis-open.org/odata/ns/edm"
+            Namespace="local">
+
+            <!-- ========================================= -->
+            <!-- TRANSACTION ANNOTATIONS -->
+            <!-- ========================================= -->
+
+            <Annotations Target="ProcureFlow.Service.Transaction">
+
+                <!-- ========================================= -->
+                <!-- HEADER INFORMATION -->
+                <!-- ========================================= -->
+
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Transaction"/>
+                        <PropertyValue Property="TypeNamePlural" String="Transactions"/>
+
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="TransactionID"/>
+                            </Record>
+                        </PropertyValue>
+
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Supplier"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+
+                <!-- ========================================= -->
+                <!-- FILTER BAR -->
+                <!-- ========================================= -->
+
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+
+                        <PropertyPath>Supplier</PropertyPath>
+
+                        <PropertyPath>ProcessType</PropertyPath>
+
+                        <PropertyPath>ProcessingTemplate</PropertyPath>
+
+                        <PropertyPath>CompanyCode</PropertyPath>
+
+                        <PropertyPath>PostingDate</PropertyPath>
+
+                        <PropertyPath>Status</PropertyPath>
+
+                        <PropertyPath>ApprovalStatus</PropertyPath>
+
+                    </Collection>
+                </Annotation>
+
+
+                <!-- ========================================= -->
+                <!-- OBJECT PAGE FIELD GROUP -->
+                <!-- ========================================= -->
+
+                <Annotation Term="UI.FieldGroup" Qualifier="General">
+                    <Record Type="UI.FieldGroupType">
+
+                        <PropertyValue Property="Data">
+                            <Collection>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Transaction ID"/>
+                                    <PropertyValue Property="Value" Path="TransactionID"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Document Number"/>
+                                    <PropertyValue Property="Value" Path="DocumentNumber"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Supplier"/>
+                                    <PropertyValue Property="Value" Path="Supplier"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Process Type"/>
+                                    <PropertyValue Property="Value" Path="ProcessType"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Processing Template"/>
+                                    <PropertyValue Property="Value" Path="ProcessingTemplate"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Company Code"/>
+                                    <PropertyValue Property="Value" Path="CompanyCode"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Posting Date"/>
+                                    <PropertyValue Property="Value" Path="PostingDate"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Amount"/>
+                                    <PropertyValue Property="Value" Path="Amount"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Currency"/>
+                                    <PropertyValue Property="Value" Path="Currency"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Status"/>
+                                    <PropertyValue Property="Value" Path="Status"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Validation Issue"/>
+                                    <PropertyValue Property="Value" Path="ValidationIssue"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Processing Age"/>
+                                    <PropertyValue Property="Value" Path="ProcessingAge"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Owner"/>
+                                    <PropertyValue Property="Value" Path="Owner"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Progress (%)"/>
+                                    <PropertyValue Property="Value" Path="Progress"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Auto Processed"/>
+                                    <PropertyValue Property="Value" Path="AutoProcessed"/>
+                                </Record>
+
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Approval Status"/>
+                                    <PropertyValue Property="Value" Path="ApprovalStatus"/>
+                                </Record>
+
+                            </Collection>
+                        </PropertyValue>
+
+                    </Record>
+                </Annotation>
+
+
+                <!-- ========================================= -->
+                <!-- OBJECT PAGE FACET -->
+                <!-- ========================================= -->
+
+                <Annotation Term="UI.Facets">
+                    <Collection>
+
+                        <Record Type="UI.ReferenceFacet">
+
+                            <PropertyValue Property="ID" String="GeneralInformation"/>
+
+                            <PropertyValue
+                                Property="Label"
+                                String="Transaction Information"/>
+
+                            <PropertyValue
+                                Property="Target"
+                                AnnotationPath="@UI.FieldGroup#General"/>
+
+                        </Record>
+
+                    </Collection>
+                </Annotation>
+
+
+                <!-- ========================================= -->
+                <!-- LIST REPORT TABLE -->
+                <!-- ========================================= -->
+
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+
+                        <!-- Transaction ID -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Transaction ID"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="TransactionID"/>
+                        </Record>
+
+
+                        <!-- Supplier -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Supplier"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="Supplier"/>
+                        </Record>
+
+
+                        <!-- Process Type -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Process Type"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="ProcessType"/>
+                        </Record>
+
+
+                        <!-- Processing Template -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Template"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="ProcessingTemplate"/>
+                        </Record>
+
+
+                        <!-- Amount -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Amount"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="Amount"/>
+                        </Record>
+
+
+                        <!-- Currency -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Currency"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="Currency"/>
+                        </Record>
+
+
+                        <!-- Status -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Status"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="Status"/>
+                        </Record>
+
+
+                        <!-- Validation Issue -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Validation Issue"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="ValidationIssue"/>
+                        </Record>
+
+
+                        <!-- Processing Age -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Processing Age"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="ProcessingAge"/>
+                        </Record>
+
+
+                        <!-- Owner -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Owner"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="Owner"/>
+                        </Record>
+
+
+                        <!-- Progress -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Progress (%)"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="Progress"/>
+                        </Record>
+
+
+                        <!-- Approval Status -->
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                                Property="Label"
+                                String="Approval Status"/>
+
+                            <PropertyValue
+                                Property="Value"
+                                Path="ApprovalStatus"/>
+                        </Record>
+
+                    </Collection>
+                </Annotation>
+
+            </Annotations>
+
+        </Schema>
+
+    </edmx:DataServices>
+
+</edmx:Edmx>
