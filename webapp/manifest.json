@@ -157,30 +157,32 @@
                 }
               },
 
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "columns": {
+                    "CustomProgressColumn": {
+                      "header": "Progress",
+                      "template": "demotransactions.ext.fragment.ProgressColumn",
+                      "horizontalAlign": "Left",
+                      "position": {
+                        "anchor": "DataField::Owner",
+                        "placement": "After"
+                      }
+                    }
+                  }
+                }
+              },
+
               "navigation": {
                 "Transactions": {
                   "detail": {
                     "route": "TransactionsObjectPage"
                   }
                 }
-              },
-
-            "controlConfiguration": {
-  "@com.sap.vocabularies.UI.v1.LineItem": {
-    "columns": {
-      "StatusColumn": {
-        "header": "Status",
-        "position": { "placement": "After", "anchor": "Amount" },
-        "template": "demotransactions.ext.fragment.StatusColumn"
-      },
-      "ProgressColumn": {
-        "header": "Progress",
-        "position": { "placement": "After", "anchor": "StatusColumn" },
-        "template": "demotransactions.ext.fragment.ProgressColumn"
-      }
-    }
-  }
-}
+              }
             }
           }
         },

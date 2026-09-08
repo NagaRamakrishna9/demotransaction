@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/ControllerExtension",
-    "sap/ui/model/json/JSONModel"
-], function (ControllerExtension, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/base/Log"
+], function (ControllerExtension, JSONModel, Log) {
     "use strict";
 
     return ControllerExtension.extend(
@@ -78,18 +79,25 @@ sap.ui.define([
                         ? Math.round((iAutoProcessed / iTotal) * 1000) / 10
                         : 0;
 
+                    let sExceptionState = "Good";
+                    if (iExceptions > 5) {
+                        sExceptionState = "Error";
+                    } else if (iExceptions > 0) {
+                        sExceptionState = "Critical";
+                    }
+
                     oKpiModel.setData({
                         totalTransactions: iTotal,
                         touchlessCount: iAutoProcessed,
                         touchlessRate: fTouchlessRate,
                         exceptions: iExceptions,
-                        exceptionState: iExceptions > 5 ? "Error" : (iExceptions > 0 ? "Critical" : "Good"),
+                        exceptionState: sExceptionState,
                         awaitingApproval: iAwaitingApproval,
                         averageAgeMinutes: this._computeAverageAgeMinutes(aTransactions)
                     });
 
                 } catch (oError) {
-                    console.error("Error calculating KPIs", oError);
+                    Log.error("Error calculating KPIs", oError);
                 }
             },
 

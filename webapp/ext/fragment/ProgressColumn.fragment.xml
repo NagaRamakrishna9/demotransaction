@@ -1,23 +1,11 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
-    xmlns="sap.m"
-    core:require="{ formatter: 'demotransactions/ext/util/Formatter' }">
+    xmlns="sap.m">
 
-    <HBox renderType="Bare">
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem" class="sapUiTinyMarginEnd"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment0'}" />
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem" class="sapUiTinyMarginEnd"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment1'}" />
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem" class="sapUiTinyMarginEnd"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment2'}" />
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem" class="sapUiTinyMarginEnd"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment3'}" />
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem" class="sapUiTinyMarginEnd"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment4'}" />
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem" class="sapUiTinyMarginEnd"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment5'}" />
-        <core:Icon src="sap-icon://circle-task-2" size="0.65rem"
-            color="{parts: ['Status', 'Progress'], formatter: 'formatter.segment6'}" />
-    </HBox>
+    <ProgressIndicator
+        percentValue="{Progress}"
+        displayValue="{= ${Progress} !== undefined ? ${Progress} + '%' : '0%' }"
+        state="{= ${Status} === 'Posted' ? 'Success' : (${Status} === 'Validation Failed' || ${Status} === 'Posting Failed' || ${Status} === 'Blocked' ? 'Error' : (${Status} === 'Awaiting Coding' || ${Status} === 'Awaiting Approval' ? 'Warning' : 'Information')) }"
+        width="120px" />
 
 </core:FragmentDefinition>

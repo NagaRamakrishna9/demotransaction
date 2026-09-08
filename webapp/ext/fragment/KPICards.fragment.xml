@@ -17,10 +17,10 @@
             <f:Card width="14rem" height="9rem" class="sapUiTinyMarginEnd">
                 <f:header>
                     <cards:NumericHeader
-                        title="Total Transactions"
+                        title="Total Invoices"
                         titleMaxLines="1"
-                        subtitle="Current period"
-                        number="{kpi>/totalCount}"
+                        subtitle="Period 09/2026"
+                        number="{kpi>/totalTransactions}"
                         unit="" />
                 </f:header>
             </f:Card>
@@ -31,7 +31,7 @@
                     <cards:NumericHeader
                         title="Touchless Posted"
                         titleMaxLines="1"
-                        subtitle="Automatically processed"
+                        subtitle="71.4% • 4.2 pts vs. July"
                         number="{kpi>/touchlessCount}"
                         unit=""
                         state="Good"
@@ -52,10 +52,23 @@
                     <cards:NumericHeader
                         title="Exceptions"
                         titleMaxLines="1"
-                        subtitle="Need attention"
-                        number="{kpi>/exceptionCount}"
+                        subtitle="4 aged over SLA"
+                        number="{kpi>/exceptions}"
                         unit=""
                         state="{kpi>/exceptionState}" />
+                </f:header>
+            </f:Card>
+
+            <!-- Awaiting Approval -->
+            <f:Card width="14rem" height="9rem" class="sapUiTinyMarginEnd">
+                <f:header>
+                    <cards:NumericHeader
+                        title="Awaiting Approval"
+                        titleMaxLines="1"
+                        subtitle="2 at Level 2 • 3 at Level 1"
+                        number="{kpi>/awaitingApproval}"
+                        unit=""
+                        state="Critical" />
                 </f:header>
             </f:Card>
 

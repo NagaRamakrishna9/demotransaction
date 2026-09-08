@@ -42,7 +42,9 @@ server:
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/mockdata
             generateMockData: false
-        annotations: []
+        annotations:
+          - urlPath: /here/goes/your/serviceurl/annotations/annotation.xml
+            localPath: ./webapp/annotations/annotation.xml
 builder:
   resources:
     excludes:
